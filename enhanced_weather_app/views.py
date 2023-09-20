@@ -224,6 +224,9 @@ def call_api(unit_system, location):
             'air_quality_index': air_quality_index
         }
 
+from django.views.decorators.csrf import ensure_csrf_cookie
+@ensure_csrf_cookie
+
 def index(request):
     return render(request, 'form.html')
 

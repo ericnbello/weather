@@ -84,6 +84,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'enhanced_weather_app.wsgi.application'
 
+# CSRF_COOKIE_SECURE = False
+# CSRF_COOKIE_HTTPONLY = False
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
