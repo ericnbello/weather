@@ -23,14 +23,14 @@ default_unit_system = 'imperial'
 default_location = 'Miami, FL, US'
 # default_alert = 'No current alerts'
 
-@csrf_exempt
+# @csrf_exempt
 def default_page(request):
     units = default_unit_system
     location = request.POST.get('location', default_location)
 
     return render(request, 'base.html', call_api(units, location))
 
-@csrf_exempt
+# @csrf_exempt
 def call_api(unit_system, location):
     try:
         r_1 = httpx.get('http://api.openweathermap.org/geo/1.0/direct?q={0}&limit=5&appid={1}'.format(location, api_key)) 
