@@ -11,6 +11,8 @@ import os
 from datetime import datetime, timezone
 import pytz
 
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -21,12 +23,14 @@ default_unit_system = 'imperial'
 default_location = 'Miami, FL, US'
 # default_alert = 'No current alerts'
 
+@ensure_csrf_cookie
 def default_page(request):
     units = default_unit_system
     location = request.POST.get('location', default_location)
 
     return render(request, 'base.html', call_api(units, location))
 
+@ensure_csrf_cookie
 def call_api(unit_system, location):
     try:
         r_1 = httpx.get('http://api.openweathermap.org/geo/1.0/direct?q={0}&limit=5&appid={1}'.format(location, api_key)) 
@@ -224,12 +228,11 @@ def call_api(unit_system, location):
             'air_quality_index': air_quality_index
         }
 
-from django.views.decorators.csrf import ensure_csrf_cookie
 @ensure_csrf_cookie
-
 def index(request):
     return render(request, 'form.html')
 
+@ensure_csrf_cookie
 def stackedareachart(request):
     """
     stackedareachart page
