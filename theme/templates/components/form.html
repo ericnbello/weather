@@ -1,6 +1,6 @@
 <div class="flex justify-center md:justify-start gap-x-2 w-full">
+    {% csrf_token %}
     <form name="location-search" id="location-search" method="POST" action="/" novalidate>
-        {% csrf_token %}
         <label class="hidden"></label>
         <input id="location" class="border-2 border-white px-2 text-black" type="text" name="location" placeholder=" Enter City Name..."  required="">
         <button id="location-btn" class="border-2 border-white px-2 py-2" type="submit" onclick="validateForm()">Submit</button>
