@@ -11,7 +11,7 @@ import os
 from datetime import datetime, timezone
 import pytz
 
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import ensure_cookie, csrf_exempt
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -23,7 +23,7 @@ default_unit_system = 'imperial'
 default_location = 'Miami, FL, US'
 # default_alert = 'No current alerts'
 
-# @csrf_exempt
+@csrf_exempt
 def default_page(request):
     units = default_unit_system
     location = request.POST.get('location', default_location)
@@ -228,7 +228,7 @@ def call_api(unit_system, location):
             'air_quality_index': air_quality_index
         }
 
-@csrf_exempt
+@ensure_cookie
 def index(request):
     return render(request, 'form.html')
 
