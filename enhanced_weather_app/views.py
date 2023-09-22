@@ -11,7 +11,7 @@ import os
 from datetime import datetime, timezone
 import pytz
 
-from django.views.decorators.csrf import ensure_cookie, csrf_exempt
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -228,7 +228,7 @@ def call_api(unit_system, location):
             'air_quality_index': air_quality_index
         }
 
-@ensure_cookie
+@ensure_csrf_cookie
 def index(request):
     return render(request, 'form.html')
 
