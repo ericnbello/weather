@@ -23,10 +23,20 @@ default_unit_system = 'imperial'
 default_location = 'Miami, FL, US'
 # default_alert = 'No current alerts'
 
+# @ensure_csrf_cookie
+# def default_page(request):
+#     units = default_unit_system
+#     location = request.POST.get('location', default_location)
+
+#     return render(request, 'base.html', call_api(units, location))
 @ensure_csrf_cookie
 def default_page(request):
     units = default_unit_system
-    location = request.POST.get('location', default_location)
+
+    if request.method == 'POST':
+        location = request.POST.get('location', default_location)
+    else:
+        location = default_location
 
     return render(request, 'base.html', call_api(units, location))
 
