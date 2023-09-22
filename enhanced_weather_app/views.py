@@ -29,6 +29,7 @@ default_location = 'Miami, FL, US'
 #     location = request.POST.get('location', default_location)
 
 #     return render(request, 'base.html', call_api(units, location))
+# @ensure_csrf_cookie
 def default_page(request):
     units = default_unit_system
 
@@ -39,6 +40,7 @@ def default_page(request):
 
     return render(request, 'base.html', call_api(units, location))
 
+# @ensure_csrf_cookie
 def call_api(unit_system, location):
     try:
         r_1 = httpx.get('http://api.openweathermap.org/geo/1.0/direct?q={0}&limit=5&appid={1}'.format(location, api_key)) 
@@ -236,11 +238,11 @@ def call_api(unit_system, location):
             'air_quality_index': air_quality_index
         }
 
-@ensure_csrf_cookie
+# @ensure_csrf_cookie
 def index(request):
     return render(request, 'form.html')
 
-@ensure_csrf_cookie
+# @ensure_csrf_cookie
 def stackedareachart(request):
     """
     stackedareachart page
