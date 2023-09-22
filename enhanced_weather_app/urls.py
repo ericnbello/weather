@@ -1,17 +1,17 @@
-"""
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# """
+# The `urlpatterns` list routes URLs to views. For more information please see:
+#     https://docs.djangoproject.com/en/3.2/topics/http/urls/
+# Examples:
+# Function views
+#     1. Add an import:  from my_app import views
+#     2. Add a URL to urlpatterns:  path('', views.home, name='home')
+# Class-based views
+#     1. Add an import:  from other_app.views import Home
+#     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+# Including another URLconf
+#     1. Import the include() function: from django.urls import include, path
+#     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+# """
 from unicodedata import name
 from django.contrib import admin
 from django.urls import path, include
@@ -23,3 +23,14 @@ urlpatterns = [
     path('', views.call_api, name='call_api'),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
+
+# from unicodedata import name
+# from django.contrib import admin
+# from django.urls import path, include
+# from enhanced_weather_app import views
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),  # Include the admin site if needed
+#     path('', views.index, name='index'),  # Use 'index' as the main view
+#     path("__reload__/", include("django_browser_reload.urls")),
+# ]
