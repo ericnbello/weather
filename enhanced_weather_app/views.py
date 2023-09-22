@@ -29,7 +29,6 @@ default_location = 'Miami, FL, US'
 #     location = request.POST.get('location', default_location)
 
 #     return render(request, 'base.html', call_api(units, location))
-@ensure_csrf_cookie
 def default_page(request):
     units = default_unit_system
 
