@@ -39,7 +39,6 @@ def default_page(request):
 
     return render(request, 'base.html', call_api(units, location))
 
-@ensure_csrf_cookie
 def call_api(unit_system, location):
     try:
         r_1 = httpx.get('http://api.openweathermap.org/geo/1.0/direct?q={0}&limit=5&appid={1}'.format(location, api_key)) 
